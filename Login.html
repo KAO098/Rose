@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>มาง้อออ 🥺</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Prompt', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #cfa6ff, #f3d4ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone {
+  width: 360px;
+  height: 640px;
+  background: linear-gradient(180deg, #e9c9ff, #f6ddff);
+  border-radius: 35px;
+  padding: 20px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+.card {
+  background: #fff;
+  border-radius: 25px;
+  padding: 25px 20px;
+  text-align: center;
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.cat {
+  font-size: 90px;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.emoji {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  position: relative;
+  height: 60px;
+}
+
+button {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s;
+}
+
+.no {
+  background: #eee;
+  color: #666;
+  left: 0;
+}
+
+.yes {
+  background: #ff4d8d;
+  color: white;
+  right: 0;
+}
+
+.yes:hover {
+  transform: scale(1.05);
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff4d8d;
+  min-height: 24px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+  <div class="card">
+    <div class="cat">🐈‍⬛</div>
+
+    <div class="text">มาง้ออ่ะ ดีกันนนะ</div>
+    <div class="emoji">🥺🥺🥺</div>
+
+    <div class="buttons">
+      <button class="no" id="noBtn">ไม่อ่ะ</button>
+      <button class="yes" onclick="yes()">อื้ออ</button>
+    </div>
+
+    <div class="message" id="msg"></div>
+  </div>
+</div>
+
+<!-- เสียง -->
+<audio id="sound">
+  <source src="https://www.myinstants.com/media/sounds/iphone-notification.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", moveBtn);
+noBtn.addEventListener("click", moveBtn);
+
+function moveBtn() {
+  const x = Math.random() * 200;
+  const y = Math.random() * 120;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+function yes() {
+  document.getElementById("sound").play();
+  document.getElementById("msg").innerText =
+    "เย้ 🖤 ขอบคุณที่ใจดีกับแมวดำตัวนี้นะ เราจะดูแลความรู้สึกนี้ให้ดีที่สุดเลย";
+}
+</script>
+
+</body>
+</html>
