@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>มาง้ออะ 💕</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Prompt',sans-serif;
+  min-height:100vh;
+  background:linear-gradient(180deg,#d7b7ff,#f5d9ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* กล่องหลัก */
+.card{
+  background:#fff;
+  width:100%;
+  max-width:360px;
+  border-radius:25px;
+  padding:25px 20px 30px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  animation:pop 0.8s ease;
+}
+
+@keyframes pop{
+  from{
+    opacity:0;
+    transform:scale(0.9) translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* รูป */
+.card img{
+  width:180px;
+  margin-bottom:15px;
+}
+
+/* ข้อความ */
+.card p{
+  font-size:18px;
+  color:#444;
+  margin-bottom:20px;
+}
+
+/* ปุ่ม */
+.buttons{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.buttons button{
+  flex:1;
+  padding:14px 0;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* ปุ่มไม่ */
+.no{
+  background:#eee;
+  color:#666;
+  transform-origin:center;
+}
+
+/* ปุ่มอืออ */
+.yes{
+  background:linear-gradient(135deg,#ff5f9e,#ff2d7a);
+  color:white;
+  font-weight:500;
+  box-shadow:0 10px 25px rgba(255,45,122,0.4);
+  transition:0.3s;
+}
+
+.yes:hover{
+  transform:translateY(-3px) scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <!-- เปลี่ยนรูปได้ -->
+  <img src="cute-cat.png" alt="cute cat">
+
+  <p>
+    มาง้ออะ ดีกันนะะ 🥺💖
+  </p>
+
+  <div class="buttons">
+    <button class="no" id="noBtn" onclick="nope()">ไม่อะ</button>
+    <button class="yes" id="yesBtn" onclick="yes()">อืออ</button>
+  </div>
+</div>
+
+<script>
+let scale = 1;
+let noCount = 0;
+
+function nope(){
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+
+  noCount++;
+
+  // ลดขนาดปุ่ม "ไม่อะ"
+  scale -= 0.2;
+  if(scale < 0.4) scale = 0.4;
+  noBtn.style.transform = `scale(${scale})`;
+
+  // ขยายปุ่ม "อืออ"
+  yesBtn.style.transform = `scale(${1 + noCount * 0.15})`;
+
+  // ครบ 3 ครั้ง
+  if(noCount >= 3){
+    noBtn.style.display = "none";     // ซ่อนปุ่มไม่อะ
+    yesBtn.style.width = "100%";      // ปุ่มอืออเต็มแถว
+    yesBtn.innerText = "งั้นไปต่อกันเลย 💕";
+  }
+}
+
+function yes(){
+  // ไปหน้าถัดไป
+  window.location.href = "next.html";
+}
+</script>
+
+</body>
+</html>
