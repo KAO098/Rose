@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>จดหมายจากใจ</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap');
+
+*{
+  box-sizing:border-box;
+  font-family:'Prompt',sans-serif;
+}
+
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(180deg,#f7f3ee,#ece5da);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.paper{
+  width:90%;
+  max-width:420px;
+  background:#fffdf8;
+  border-radius:20px;
+  padding:35px 30px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+h2{
+  margin-top:0;
+  font-weight:500;
+  color:#5a4a3b;
+}
+
+p{
+  font-size:15px;
+  line-height:1.9;
+  color:#555;
+  white-space:pre-line;
+}
+
+.signature{
+  margin-top:25px;
+  text-align:right;
+  font-size:14px;
+  color:#777;
+}
+
+button{
+  margin-top:30px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:25px;
+  background:#c29b6c;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#b0895a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="paper">
+  <h2>ถึงเธอ 🤍</h2>
+
+  <p>
+เค้าไม่รู้จะเริ่มยังไงดี  
+แต่ถ้าเธออ่านมาถึงตรงนี้  
+แปลว่าเธอให้โอกาสเค้าแล้ว  
+
+เค้าอาจไม่เก่งคำพูด  
+อาจทำพลาดไปหลายอย่าง  
+แต่ความรู้สึกที่มีให้เธอ  
+ไม่เคยเป็นเรื่องเล่น ๆ เลย  
+
+ถ้าวันนี้เธอยังไม่พร้อม  
+เค้าก็จะเข้าใจ  
+แค่อยากให้รู้ว่า  
+เค้ายังอยู่ตรงนี้เสมอ
+  </p>
+
+  <div class="signature">
+    จากคนที่ยังคิดถึงเธอ
+  </div>
+
+  <button onclick="next()">อ่านต่ออีกนิดนะ</button>
+</div>
+
+<script>
+function next(){
+  // 🔁 หน้าถัดไป (หน้าง้อ / สรุป)
+  window.location.href = "black-cat.html";
+}
+</script>
+
+</body>
+</html>

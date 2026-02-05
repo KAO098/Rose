@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>กล่องความในใจ</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Prompt', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #f6f2ec, #efe8dc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 90%;
+  max-width: 380px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 30px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #3f5d45;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+button {
+  background: #6fa97f;
+  color: white;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #5d946d;
+}
+
+.dots {
+  margin-top: 25px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #cfd8cc;
+  border-radius: 50%;
+  margin: 0 4px;
+}
+
+.dot.active {
+  background: #6fa97f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="icon">🌱</div>
+
+  <h2>ก๊อก ก๊อก..</h2>
+
+  <p>
+    เค้ามีอะไรบางอย่าง<br>
+    อยากให้เธออ่านนะ
+  </p>
+
+  <button onclick="next()">เปิดกล่องความในใจ</button>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+<script>
+function next() {
+  // 🔁 หน้าถัดไป (เช่น หน้าง้อจริง)
+  window.location.href = "black-cat.html";
+}
+</script>
+
+</body>
+</html>

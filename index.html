@@ -158,7 +158,7 @@ input {
 </div>
 
 <script>
-const correctPin = "2512"; // 🔐 เปลี่ยนรหัสตรงนี้
+const correctPin = "2512"; // 🔐 รหัสของคุณ
 let input = "";
 
 function add(num) {
@@ -175,13 +175,17 @@ function clearPin() {
 
 function check() {
   if (input === correctPin) {
-    window.location.href = "black-cat.html"; // 🔁 หน้าเว็บง้อ
+    // ✅ ใส่รหัสถูก ค่อยไปหน้าถัดไป
+    window.location.href = "letter.html";
   } else {
-    document.getElementById("error").innerText = "จำไม่ได้จริงหรอออออ ร้องไห้ละ 😿💔";
+    document.getElementById("error").innerText =
+      "จำไม่ได้จริงหรอออออ ร้องไห้ละ 😿💔";
     input = "";
     document.getElementById("pin").value = "";
   }
 }
+</script>
+
 </script>
 
 </body>
