@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เพลงจากใจ 🎶</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&family=Mitr:wght@400;500&display=swap');
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Prompt',sans-serif;
+  background:linear-gradient(135deg,#fce4ec,#f8bbd0,#f48fb1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.card{
+  background:white;
+  max-width:420px;
+  width:100%;
+  padding:40px 30px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+}
+
+h2{
+  font-family:'Mitr',sans-serif;
+  color:#c2185b;
+  margin-bottom:10px;
+}
+
+p{
+  color:#666;
+  font-size:16px;
+  margin-bottom:25px;
+}
+
+img{
+  width:80%;
+  border-radius:20px;
+  margin-bottom:25px;
+}
+
+/* ปุ่ม */
+button{
+  margin-top:20px;
+  padding:15px 35px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ec407a,#e91e63);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(233,30,99,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>เพลงนี้…</h2>
+  <p>อยากให้เธอฟังตอนนี้ 🎧</p>
+
+  <!-- ใส่รูปได้ -->
+  <img src="ROSE.png" alt="our memory">
+
+  <!-- ใส่เพลง -->
+  <audio controls autoplay>
+    <source src="ปากดี x ใจเรายังตรงกันอยู่ไหม x ใจน้อย x หนาว PACK4「 genieSeason Medley G27」 (mp3cut.net).mp3" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับเพลง
+  </audio>
+
+  <br>
+
+  <button onclick="back()">ย้อนกลับไปอ่านอีกครั้ง 💖</button>
+</div>
+
+<script>
+function back(){
+  window.location.href = "letter.html";
+}
+</script>
+
+</body>
+</html>

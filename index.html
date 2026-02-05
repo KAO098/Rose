@@ -433,6 +433,35 @@ document.addEventListener('keypress', function(e) {
   }
 });
 </script>
+<script>
+const slider = document.getElementById("slider");
+const slides = slider.querySelectorAll("img");
+let index = 0;
+let autoSlide;
+
+function startAutoSlide() {
+  autoSlide = setInterval(() => {
+    index = (index + 1) % slides.length;
+    slider.scrollTo({
+      left: slider.clientWidth * index,
+      behavior: "smooth"
+    });
+  }, 2000);
+}
+
+function stopAutoSlide() {
+  clearInterval(autoSlide);
+}
+
+// เริ่มอัตโนมัติ
+startAutoSlide();
+
+// ถ้าผู้ใช้ปัดเอง → หยุดชั่วคราว แล้วเริ่มใหม่
+slider.addEventListener("touchstart", stopAutoSlide);
+slider.addEventListener("touchend", startAutoSlide);
+slider.addEventListener("mousedown", stopAutoSlide);
+slider.addEventListener("mouseup", startAutoSlide);
+</script>
 
 </body>
 </html>
