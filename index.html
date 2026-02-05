@@ -3,119 +3,338 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine’s Lock 💝</title>
+<title>Valentine's Lock 💝</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Mitr:wght@400;500&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(180deg, #fff0f5, #ffe4ec);
+  font-family: 'Prompt', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* พื้นหลังหัวใจลอย */
+.floating-hearts {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-hearts span {
+  position: absolute;
+  bottom: -60px;
+  font-size: 25px;
+  opacity: 0;
+  animation: float-up 20s infinite ease-in-out;
+}
+
+.floating-hearts span:nth-child(1) { left: 5%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 20%; animation-delay: 4s; }
+.floating-hearts span:nth-child(3) { left: 35%; animation-delay: 8s; }
+.floating-hearts span:nth-child(4) { left: 50%; animation-delay: 2s; }
+.floating-hearts span:nth-child(5) { left: 65%; animation-delay: 6s; }
+.floating-hearts span:nth-child(6) { left: 80%; animation-delay: 10s; }
+.floating-hearts span:nth-child(7) { left: 92%; animation-delay: 12s; }
+
+@keyframes float-up {
+  0% {
+    bottom: -60px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(50px) rotate(180deg);
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: 120vh;
+    opacity: 0;
+    transform: translateX(-30px) rotate(360deg);
+  }
 }
 
 .container {
   width: 100%;
-  max-width: 900px;
-  background: white;
-  border-radius: 25px;
+  max-width: 950px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.95) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 35px;
   overflow: hidden;
   display: flex;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+  animation: slideUp 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid rgba(233, 30, 99, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .left {
   width: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(236, 64, 122, 0.1));
+  z-index: 1;
+  pointer-events: none;
 }
 
 .left img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.left:hover img {
+  transform: scale(1.05);
 }
 
 .right {
   width: 50%;
-  padding: 40px 30px;
+  padding: 50px 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.emoji-decoration {
+  font-size: 48px;
+  margin-bottom: 15px;
+  animation: float-emoji 3s infinite;
+}
+
+@keyframes float-emoji {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 h2 {
+  font-family: 'Mitr', sans-serif;
   font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: #c2185b;
+  text-shadow: 2px 2px 8px rgba(194, 24, 91, 0.15);
 }
 
 .lock {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #666;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.pin-display {
+  position: relative;
+  margin-bottom: 25px;
 }
 
 input {
   width: 100%;
-  padding: 14px;
-  font-size: 18px;
+  padding: 18px;
+  font-size: 32px;
   text-align: center;
-  border-radius: 15px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
-  letter-spacing: 6px;
+  border-radius: 20px;
+  border: 2px solid #f8bbd0;
+  margin-bottom: 0;
+  letter-spacing: 20px;
+  background: linear-gradient(135deg, #fff 0%, #fff5f8 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+}
+
+input:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
 }
 
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+  margin-bottom: 20px;
 }
 
 .keypad button {
-  padding: 15px 0;
-  font-size: 18px;
-  border-radius: 15px;
+  padding: 18px 0;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 18px;
   border: none;
-  background: #ffe4ec;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.15);
+  color: #c2185b;
 }
 
 .keypad button:hover {
-  background: #ffc2d6;
+  background: linear-gradient(135deg, #f8bbd0, #ec407a);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.25);
+}
+
+.keypad button:active {
+  transform: translateY(-1px);
 }
 
 .submit {
-  margin-top: 15px;
+  margin-top: 5px;
   width: 100%;
-  padding: 14px;
-  border-radius: 20px;
+  padding: 18px;
+  border-radius: 25px;
   border: none;
-  font-size: 16px;
-  background: #ff5f8d;
+  font-size: 18px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #ec407a, #e91e63);
   color: white;
   cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 15px 35px rgba(233, 30, 99, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submit:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.submit:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(233, 30, 99, 0.4);
+}
+
+.submit:active {
+  transform: translateY(-2px) scale(1);
 }
 
 .error {
-  margin-top: 10px;
-  color: #ff5f8d;
-  font-size: 14px;
-  min-height: 18px;
+  margin-top: 15px;
+  color: #e91e63;
+  font-size: 15px;
+  min-height: 22px;
+  font-weight: 400;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* ตกแต่งกรอบ */
+.right::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px dashed rgba(233, 30, 99, 0.15);
+  border-radius: 25px;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    max-width: 450px;
   }
+  
   .left, .right {
     width: 100%;
   }
+  
   .left {
-    height: 280px;
+    height: 320px;
+  }
+  
+  .right {
+    padding: 40px 30px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  .emoji-decoration {
+    font-size: 40px;
+  }
+  
+  input {
+    font-size: 28px;
+    padding: 16px;
+    letter-spacing: 15px;
+  }
+  
+  .keypad button {
+    padding: 16px 0;
+    font-size: 20px;
   }
 }
 </style>
@@ -123,19 +342,31 @@ input {
 
 <body>
 
+<!-- พื้นหลังหัวใจลอย -->
+<div class="floating-hearts">
+  <span>💕</span>
+  <span>💖</span>
+  <span>💗</span>
+  <span>💓</span>
+  <span>💝</span>
+  <span>💘</span>
+  <span>❤️</span>
+</div>
+
 <div class="container">
   <div class="left">
-    <!-- 🔁 เปลี่ยนเป็นรูปของคุณ -->
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="love">
+    <!-- รูปแมวดำน่ารัก -->
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="cute black cat">
   </div>
 
   <div class="right">
-    🎀
+    <div class="emoji-decoration">🐈‍⬛</div>
     <h2>การ์ดพิเศษ</h2>
-    <div class="lock">รหัสลับของเรา🎄🎅🏻🎄
-</div>
+    <div class="lock">รหัสลับของเรา 🎄🎅🏻🎄</div>
 
-    <input type="password" id="pin" maxlength="4" disabled>
+    <div class="pin-display">
+      <input type="password" id="pin" maxlength="4" readonly>
+    </div>
 
     <div class="keypad">
       <button onclick="add(1)">1</button>
@@ -152,7 +383,9 @@ input {
       <button onclick="check()">✔</button>
     </div>
 
-    <button class="submit" onclick="check()">Unlock 💝</button>
+    <button class="submit" onclick="check()">
+      <span style="position:relative;z-index:1;">🔓 Unlock 💝</span>
+    </button>
     <div class="error" id="error"></div>
   </div>
 </div>
@@ -176,16 +409,29 @@ function clearPin() {
 function check() {
   if (input === correctPin) {
     // ✅ ใส่รหัสถูก ค่อยไปหน้าถัดไป
-    window.location.href = "letter.html";
-  } else {
-    document.getElementById("error").innerText =
-      "จำไม่ได้จริงหรอออออ ร้องไห้ละ 😿💔";
-    input = "";
-    document.getElementById("pin").value = "";
+    document.getElementById("error").innerText = "✨ ถูกต้อง! กำลังเปิด... 💕";
+    document.getElementById("error").style.color = "#43a047";
+    
+    setTimeout(() => {
+      window.location.href = "letter.html";
+    }, 800);
+  } else if (input.length === 4) {
+    document.getElementById("error").innerText = "จำไม่ได้จริงหรอออออ ร้องไห้ละ 😿💔";
+    
+    // เคลียร์หลังจาก 1.5 วินาที
+    setTimeout(() => {
+      input = "";
+      document.getElementById("pin").value = "";
+    }, 1500);
   }
 }
-</script>
 
+// กด Enter เพื่อตรวจสอบ
+document.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    check();
+  }
+});
 </script>
 
 </body>

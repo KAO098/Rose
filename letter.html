@@ -3,103 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>กล่องความในใจ</title>
+<title>กล่องความในใจ 💕</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&family=Mitr:wght@300;400&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(180deg, #f6f2ec, #efe8dc);
+  font-family: 'Prompt', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
 }
 
+/* พื้นหลังใบไม้ลอย */
+.floating-leaves {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-leaves span {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0;
+  animation: float-leaf 25s infinite ease-in-out;
+}
+
+.floating-leaves span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-leaves span:nth-child(2) { left: 25%; animation-delay: 5s; }
+.floating-leaves span:nth-child(3) { left: 40%; animation-delay: 10s; }
+.floating-leaves span:nth-child(4) { left: 55%; animation-delay: 3s; }
+.floating-leaves span:nth-child(5) { left: 70%; animation-delay: 8s; }
+.floating-leaves span:nth-child(6) { left: 85%; animation-delay: 13s; }
+
+@keyframes float-leaf {
+  0% {
+    bottom: -60px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(100px) rotate(180deg);
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    bottom: 120vh;
+    opacity: 0;
+    transform: translateX(-50px) rotate(360deg);
+  }
+}
+
+/* การ์ดหลัก */
 .card {
   width: 90%;
-  max-width: 380px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 30px;
-  padding: 40px 30px;
+  max-width: 420px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 35px;
+  padding: 50px 35px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  animation: fadeUp 1s ease;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.5);
+  animation: fadeUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  z-index: 10;
+  border: 2px solid rgba(233, 30, 99, 0.2);
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(50px) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 2px dashed rgba(233, 30, 99, 0.2);
+  border-radius: 25px;
+  pointer-events: none;
+}
+
+/* ไอคอน */
 .icon {
-  font-size: 42px;
-  margin-bottom: 15px;
+  font-size: 64px;
+  margin-bottom: 20px;
+  animation: grow 2s infinite;
+  filter: drop-shadow(0 5px 15px rgba(233, 30, 99, 0.3));
 }
 
+@keyframes grow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* หัวข้อ */
 h2 {
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: #3f5d45;
+  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #c2185b;
+  font-family: 'Mitr', sans-serif;
+  text-shadow: 2px 2px 8px rgba(194, 24, 91, 0.15);
+  letter-spacing: 1px;
 }
 
+/* ข้อความ */
 p {
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 2;
   color: #555;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+  font-weight: 300;
 }
 
+p br {
+  display: block;
+  content: "";
+  margin: 5px 0;
+}
+
+/* ปุ่ม */
 button {
-  background: #6fa97f;
+  background: linear-gradient(135deg, #ec407a, #e91e63);
   color: white;
   border: none;
-  padding: 14px 26px;
-  border-radius: 25px;
-  font-size: 15px;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 15px 35px rgba(233, 30, 99, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 button:hover {
-  background: #5d946d;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 20px 45px rgba(233, 30, 99, 0.4);
 }
 
+button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* จุด */
 .dots {
-  margin-top: 25px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: #cfd8cc;
+  width: 10px;
+  height: 10px;
+  background: #f8bbd0;
   border-radius: 50%;
-  margin: 0 4px;
+  transition: all 0.3s ease;
 }
 
 .dot.active {
-  background: #6fa97f;
+  background: #e91e63;
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+}
+
+/* เอฟเฟกต์แสง */
+.shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 40px 28px;
+  }
+  
+  .icon {
+    font-size: 56px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 16px 35px;
+    font-size: 16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- พื้นหลังหัวใจลอย -->
+<div class="floating-leaves">
+  <span>💕</span>
+  <span>💖</span>
+  <span>💗</span>
+  <span>💓</span>
+  <span>💝</span>
+  <span>💘</span>
+</div>
+
 <div class="card">
-  <div class="icon">🌱</div>
+  <div class="shine"></div>
+  
+  <div class="icon">💕</div>
 
   <h2>ก๊อก ก๊อก..</h2>
 
@@ -108,7 +297,9 @@ button:hover {
     อยากให้เธออ่านนะ
   </p>
 
-  <button onclick="next()">เปิดกล่องความในใจ</button>
+  <button onclick="next()">
+    <span style="position:relative;z-index:1;">🎁 เปิดกล่องความในใจ</span>
+  </button>
 
   <div class="dots">
     <span class="dot active"></span>
@@ -119,8 +310,13 @@ button:hover {
 
 <script>
 function next() {
-  // 🔁 หน้าถัดไป (เช่น หน้าง้อจริง)
-  window.location.href = "black-cat.html";
+  // เพิ่มเอฟเฟกต์ก่อนเปลี่ยนหน้า
+  document.querySelector('.card').style.transform = 'scale(0.95)';
+  document.querySelector('.card').style.opacity = '0';
+  
+  setTimeout(() => {
+    window.location.href = "letter-note.html";
+  }, 300);
 }
 </script>
 
