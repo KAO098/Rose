@@ -158,8 +158,8 @@ body{
 .wrapper{
   position:relative;
   width:100%;
-  max-width:420px;
-  height:500px;
+  max-width:480px;
+  height:600px;
   display:none;
   animation:slideIn 1s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index:10;
@@ -189,7 +189,7 @@ body{
   bottom:0;
   left:0;
   right:0;
-  height:280px;
+  height:320px;
   background:linear-gradient(135deg,#ff6b9d,#e91e63);
   border-radius:0 0 30px 30px;
   box-shadow:0 30px 60px rgba(0,0,0,0.35);
@@ -248,7 +248,7 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:36px;
+  font-size:40px;
   z-index:6;
   animation:pulse 2s infinite;
   filter:drop-shadow(0 6px 12px rgba(0,0,0,0.3));
@@ -269,17 +269,33 @@ body{
 /* จดหมาย - ซ่อนอยู่ข้างใน */
 .letter{
   position:absolute;
-  bottom:20px;
+  bottom:30px;
   left:50%;
   transform:translateX(-50%);
-  width:90%;
+  width:92%;
+  max-height:520px;
+  overflow-y:auto;
   background:linear-gradient(135deg,#ffffff 0%,#fff5f8 100%);
   border-radius:25px;
-  padding:35px 28px;
+  padding:40px 32px;
   box-shadow:0 25px 60px rgba(0,0,0,0.25);
   z-index:2;
   border:2px solid rgba(255,255,255,0.9);
   transition:all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.letter::-webkit-scrollbar{
+  width:8px;
+}
+
+.letter::-webkit-scrollbar-track{
+  background:rgba(233,30,99,0.1);
+  border-radius:10px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+  background:linear-gradient(135deg,#ff6b9d,#e91e63);
+  border-radius:10px;
 }
 
 .letter::before{
@@ -295,48 +311,140 @@ body{
 }
 
 .letter h3{
-  margin:0 0 20px;
+  margin:0 0 25px;
   font-weight:600;
   font-size:22px;
   color:#e91e63;
   text-shadow:2px 2px 6px rgba(233,30,99,0.15);
   text-align:center;
+  line-height:1.5;
 }
 
 .letter p{
   font-family:'Sarabun',sans-serif;
   font-size:16px;
-  line-height:2.2;
+  line-height:2;
   color:#444;
   white-space:pre-line;
-  margin-bottom:22px;
+  margin-bottom:25px;
   text-align:left;
 }
 
 .next-btn{
-  margin-top:10px;
-  padding:14px 35px;
+  margin-top:15px;
+  padding:16px 40px;
   border:none;
   border-radius:30px;
   background:linear-gradient(135deg,#ff6b9d,#e91e63);
   color:white;
-  font-size:16px;
+  font-size:17px;
   font-weight:500;
   cursor:pointer;
   transition:all 0.3s ease;
-  box-shadow:0 8px 20px rgba(233,30,99,0.35);
+  box-shadow:0 10px 25px rgba(233,30,99,0.35);
   display:block;
   margin-left:auto;
   margin-right:auto;
+  position:relative;
+  overflow:hidden;
+}
+
+.next-btn::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  transform:translate(-50%,-50%);
+  transition:width 0.5s,height 0.5s;
+}
+
+.next-btn:hover::before{
+  width:250px;
+  height:250px;
 }
 
 .next-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 28px rgba(233,30,99,0.45);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 15px 35px rgba(233,30,99,0.45);
 }
 
 .next-btn:active{
-  transform:translateY(-1px);
+  transform:translateY(-1px) scale(1.02);
+}
+
+/* ปุ่มหลังอ่านจดหมาย */
+.read-more-container{
+  position:absolute;
+  bottom:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  text-align:center;
+  opacity:0;
+  transition:all 0.8s ease;
+  z-index:4;
+}
+
+.read-more-container.show{
+  opacity:1;
+  bottom:20px;
+}
+
+.read-more-container button{
+  padding:18px 45px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,#ff6b9d,#e91e63);
+  color:white;
+  font-size:18px;
+  font-weight:500;
+  cursor:pointer;
+  box-shadow:0 15px 35px rgba(233,30,99,0.4);
+  transition:all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position:relative;
+  overflow:hidden;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+.read-more-container button::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  border-radius:50%;
+  background:rgba(255,255,255,0.3);
+  transform:translate(-50%,-50%);
+  transition:width 0.5s,height 0.5s;
+}
+
+.read-more-container button:hover{
+  transform:translateY(-5px) scale(1.08);
+  box-shadow:0 20px 45px rgba(233,30,99,0.5);
+  animation:none;
+}
+
+.read-more-container button:hover::before{
+  width:280px;
+  height:280px;
+}
+
+.read-more-container button:active{
+  transform:translateY(-2px) scale(1.03);
 }
 
 /* เปิดซอง */
@@ -345,26 +453,31 @@ body{
 }
 
 .wrapper.open .letter{
-  bottom:200px;
+  bottom:250px;
   box-shadow:0 30px 70px rgba(0,0,0,0.35);
 }
 
 .wrapper.open .envelope{
-  height:320px;
+  height:360px;
 }
 
 /* คำแนะนำ */
 .tap-hint{
   position:absolute;
-  bottom:20px;
+  bottom:15px;
   left:50%;
   transform:translateX(-50%);
-  font-size:14px;
-  color:#999;
+  font-size:15px;
+  color:#fff;
   animation:float-hint 2.5s infinite;
-  opacity:0.8;
+  opacity:0.9;
   white-space:nowrap;
   z-index:1;
+  background:rgba(233,30,99,0.8);
+  padding:10px 25px;
+  border-radius:25px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 @keyframes float-hint{
@@ -377,7 +490,7 @@ body{
 }
 
 /* Responsive */
-@media(max-width:480px){
+@media(max-width:500px){
   .start h2{
     font-size:26px;
   }
@@ -392,36 +505,52 @@ body{
   }
   
   .wrapper{
-    height:450px;
+    max-width:95%;
+    height:550px;
   }
   
   .envelope{
-    height:260px;
-  }
-  
-  .wrapper.open .envelope{
     height:300px;
   }
   
+  .wrapper.open .envelope{
+    height:340px;
+  }
+  
   .letter{
-    padding:28px 22px;
+    padding:32px 24px;
+    max-height:470px;
   }
   
   .letter h3{
-    font-size:20px;
+    font-size:19px;
   }
   
   .letter p{
     font-size:15px;
-    line-height:2;
+    line-height:1.9;
   }
   
   .wrapper.open .letter{
-    bottom:180px;
+    bottom:230px;
   }
   
   .heart{
-    font-size:32px;
+    font-size:36px;
+  }
+  
+  .next-btn{
+    padding:14px 35px;
+    font-size:16px;
+  }
+  
+  .read-more-container button{
+    padding:16px 38px;
+    font-size:16px;
+  }
+  
+  .read-more-container.show{
+    bottom:15px;
   }
 }
 </style>
@@ -452,21 +581,17 @@ body{
   <div class="envelope-container" onclick="openLetter()">
     
     <!-- จดหมายซ่อนอยู่ข้างใน -->
-    <div class="letter">
+    <div class="letter" id="letterContent">
       <h3>สำหรับคนเก่งที่ผ่านอะไรมาตั้งไม่รู้เท่าไหร่ ❤️</h3>
       <p>สวัสดี ยัยแมวดำ
 
+
 ขอบคุณที่เปิดอ่าน
 ทุกคำที่เขียน คือความจริงใจทั้งหมด
-ใครๆก็บอกนะว่าความรักของเรา 1000/10 บางทีเก้าอาจจะมองข้ามเรื่องเล็กๆไปบ้างจนสะสมในใจพี่แบบไม่รู้ตัว หลายๆครั้งที่พี่ถามว่าแกมีอะไรในใจมั้ย เอาจริงๆตอนนั้นไม่มีเลยนอกจากพี่เลยนะ
-บางทีเก้าเองก็เหนื่อยกับงานพี่ก็คงเหนื่อยกว่าเก้าอีกเยอะมากๆเลยแต่เก้าก็ยังอยากอยู่กับพี่นะที่เก้ามาก็เพราะอยากให้เราอยู่ด้วยกันมากขึ้นแล้วอยากให้เรารักกันมากขึ้น
-ลองคิดภาพว่าเรากลับมาคุยกันเหมือนเดิมสิมันจะดีขนาดไหน มาพร้อมสร้างหลายๆอย่างไปด้วยกันทำไรด้วยกันถ้าล้มก็แค่เริ่มใหม่
-เรื่องเดียวที่เสียดายที่สุดไม่ใช่ความรักหรอกนะแต่เป็นความสัมพันธ์ทีเราสนิทกันที่สุดในช่วงนั้นเหมือนเสียเพื่อนที่สนิทที่สุดของใจไปเลยอะ
 
-</p>
 
       <button class="next-btn" onclick="goNext(event)">
-        อ่านจนจบ →
+        อ่านต่อ →
       </button>
     </div>
 
@@ -478,11 +603,19 @@ body{
     
   </div>
   
-  <div class="tap-hint">👆 แตะที่ซองจดหมาย</div>
+  <!-- ปุ่มหลังอ่านจดหมาย -->
+  <div class="read-more-container" id="readMoreBtn">
+    <button onclick="goNext(event)">
+      ไปหน้าถัดไป 💖
+    </button>
+  </div>
+  
+  <div class="tap-hint">👆 แตะที่ซองจดหมายเพื่อเปิด</div>
 </div>
 
 <script>
 let opened = false;
+let scrollCheckInterval;
 
 function showLetter(){
   const start = document.getElementById("start");
@@ -497,12 +630,33 @@ function openLetter(){
     document.getElementById("card").classList.add("open");
     opened = true;
     document.querySelector(".tap-hint").style.display = "none";
+    
+    // เริ่มตรวจสอบการเลื่อนของจดหมาย
+    setTimeout(() => {
+      checkScroll();
+      const letter = document.getElementById("letterContent");
+      letter.addEventListener('scroll', checkScroll);
+    }, 1500);
+  }
+}
+
+function checkScroll(){
+  const letter = document.getElementById("letterContent");
+  const readMoreBtn = document.getElementById("readMoreBtn");
+  
+  // ตรวจสอบว่าเลื่อนถึงจุดใกล้ท้ายจดหมายหรือไม่
+  const scrollPosition = letter.scrollTop + letter.clientHeight;
+  const scrollHeight = letter.scrollHeight;
+  
+  // แสดงปุ่มเมื่อเลื่อนใกล้ถึงท้าย (90% ของความสูง)
+  if(scrollPosition >= scrollHeight * 0.9){
+    readMoreBtn.classList.add('show');
   }
 }
 
 function goNext(e){
   e.stopPropagation();
-  window.location.href = "black-cat.html";
+  window.location.href = "cute-page.html";
 }
 </script>
 
